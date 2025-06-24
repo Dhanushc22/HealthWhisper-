@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9FEFD"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="1200dp"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:gravity="center_horizontal"
+        android:weightSum="1">
+
+        <!-- App Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:elevation="8dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/a"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HealthWhisper"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#009688"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your AI Health Assistant"
+                    android:textSize="13sp"
+                    android:textColor="#757575"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Main Title -->
+        <TextView
+            android:id="@+id/home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Health, Simplified"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#00bcd4"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"/>
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/home_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Experience the future of healthcare with AI-powered medical analysis. Get instant insights on X-rays, voice consultations, medical reports, and medication information."
+            android:textSize="16sp"
+            android:textColor="#444"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"/>
+
+        <!-- Features Title -->
+        <TextView
+            android:id="@+id/features_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI-Powered Health Features"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1976D2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"/>
+
+        <!-- Features List (vertical) -->
+        <LinearLayout
+            android:id="@+id/features_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:divider="@android:color/transparent"
+            android:showDividers="middle"
+            android:dividerPadding="0dp"
+            android:dividerHeight="32dp">
+
+            <!-- Feature 1 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_xray"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginBottom="0dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="#EAF6FB">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/e"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="X-Ray Scanner"
+                        android:textStyle="bold"
+                        android:textColor="#1976D2"
+                        android:textSize="18sp"
+                        android:layout_marginTop="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload and analyze X-ray images with AI-powered medical insights"
+                        android:textColor="#333"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/>
+                    <Button
+                        android:id="@+id/btn_xray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:minHeight="48dp"
+                        android:minWidth="48dp"
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp"
+                        android:text="Explore X-Ray Scanner"
+                        android:textAllCaps="false"
+                        android:backgroundTint="#00BCD4"
+                        android:textColor="#fff"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Gap -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="@android:color/transparent" />
+
+            <!-- Feature 2 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_voice"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginBottom="0dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="#E8FAF2">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/d"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Voice Consultation"
+                        android:textStyle="bold"
+                        android:textColor="#43A047"
+                        android:textSize="18sp"
+                        android:layout_marginTop="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ask health questions and get expert medical advice through voice"
+                        android:textColor="#333"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/>
+                    <Button
+                        android:id="@+id/btn_voice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:minHeight="48dp"
+                        android:minWidth="48dp"
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp"
+                        android:text="Explore Voice Consultation"
+                        android:textAllCaps="false"
+                        android:backgroundTint="#43A047"
+                        android:textColor="#fff"
+                        android:layout_marginTop="10dp"
+                        android:elevation="2dp"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Gap -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="@android:color/transparent" />
+
+            <!-- Feature 3 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_medical_term"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginBottom="0dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="#F3F0FB">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/c"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medical Term Decoder"
+                        android:textStyle="bold"
+                        android:textColor="#8E24AA"
+                        android:textSize="18sp"
+                        android:layout_marginTop="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload blood reports and get easy-to-understand explanations"
+                        android:textColor="#333"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/>
+                    <Button
+                        android:id="@+id/btn_medical_term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explore Medical Term Decoder"
+                        android:textAllCaps="false"
+                        android:backgroundTint="#8E24AA"
+                        android:textColor="#fff"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Gap -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="@android:color/transparent" />
+
+            <!-- Feature 4 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_tablet"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginBottom="0dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="#FFF4EF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/b"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tablet Analyzer"
+                        android:textStyle="bold"
+                        android:textColor="#E65100"
+                        android:textSize="18sp"
+                        android:layout_marginTop="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scan medication and get detailed information about tablets"
+                        android:textColor="#333"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/>
+                    <Button
+                        android:id="@+id/btn_tablet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explore Tablet Analyzer"
+                        android:textAllCaps="false"
+                        android:backgroundTint="#E65100"
+                        android:textColor="#fff"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- Footer at the end of the LinearLayout -->
+        <TextView
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Empowering patients with AI-driven healthcare insights"
+            android:textSize="15sp"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:background="#006400"
+            android:elevation="8dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:fontFamily="sans-serif-medium"/>
+    </LinearLayout>
+</ScrollView>

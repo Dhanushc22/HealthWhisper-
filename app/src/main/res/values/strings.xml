@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HealthWhisper</string>
+    <string name="xray_scanner">X-Ray Scanner</string>
+    <string name="voice_consultation">Voice Consultation</string>
+    <string name="medical_term_decoder">Medical Term Decoder</string>
+    <string name="tablet_analyzer">Tablet Analyzer</string>
+    <string name="explore_xray">Explore X-Ray Scanner</string>
+    <string name="explore_voice">Explore Voice Consultation</string>
+    <string name="explore_medical_term">Explore Medical Term Decoder</string>
+    <string name="explore_tablet">Explore Tablet Analyzer</string>
+</resources>
