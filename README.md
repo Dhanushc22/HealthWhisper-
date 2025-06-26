@@ -47,15 +47,22 @@ Scan any medicine strip or a prescription note. The app will identify the tablet
 
 ---
 
-## App Screenshots
+## 📸 App Screenshots
 
-(Add the following images to your repository or image host and link them here.)
+### X-ray Scanner  
+![X-ray Scanner](./XrayAnalysis.jpg)
 
-- X-ray Scanner: `XrayAnalysis.jpg`
-- Voice Assistant: `Voiceanalysis.jpg`
-- Blood Report Decoder: `BloodreportAnalysis.jpg`
-- Tablet Scanner: `TabletAnalysis.jpg`
-- Main Interface: `WhatsApp Image 2025-06-26 at 16.50.18_317472d4.jpg`
+### Voice Assistant  
+![Voice Assistant](./Voiceanalysis.jpg)
+
+### Blood Report Decoder  
+![Blood Report Decoder](./BloodreportAnalysis.jpg)
+
+### Tablet Analyzer  
+![Tablet Analyzer](./TabletAnalysis.jpg)
+
+### Main App Interface  
+![Main App UI](./WhatsApp%20Image%202025-06-26%20at%2016.50.18_317472d4.jpg)
 
 ---
 
