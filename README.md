@@ -49,6 +49,10 @@ Scan any medicine strip or a prescription note. The app will identify the tablet
 
 ## 📸 App Screenshots
 
+
+### Main App Interface  
+![Main App UI](./WhatsApp%20Image%202025-06-26%20at%2016.50.18_317472d4.jpg)
+
 ### X-ray Scanner  
 ![X-ray Scanner](./XrayAnalysis.jpg)
 
@@ -61,8 +65,6 @@ Scan any medicine strip or a prescription note. The app will identify the tablet
 ### Tablet Analyzer  
 ![Tablet Analyzer](./TabletAnalysis.jpg)
 
-### Main App Interface  
-![Main App UI](./WhatsApp%20Image%202025-06-26%20at%2016.50.18_317472d4.jpg)
 
 ---
 
