@@ -53,7 +53,7 @@ It’s like having a **mini doctor in your pocket**—fast, private, and always 
 
 | X-ray Scanner | Voice Chat | Report Decoder | Tablet Scanner |
 |---------------|-------------|----------------|----------------|
-| ![]() | ![]() | ![]() | ![]() |
+| ![](XrayAnalysis.jpg) | ![]() | ![]() | ![]() |
 
 ---
 
