@@ -1,63 +1,65 @@
-# 💡 HealthWhisper: Your AI-Powered Medical Companion
+# HealthWhisper: Your AI-Powered Medical Companion
 
-HealthWhisper is a smart and user-friendly mobile application that uses **Artificial Intelligence** to help patients understand medical data like **X-rays, blood reports, tablets**, and even **symptoms via voice**.
+HealthWhisper is a mobile application designed to make healthcare easier and more understandable for everyone. With the help of artificial intelligence, users can get clear and simple explanations of medical information such as X-rays, blood reports, tablets, and even symptoms — just by speaking.
 
-It’s like having a **mini doctor in your pocket**—fast, private, and always available.
-
----
-
-## ✨ What Makes HealthWhisper Unique?
-
-✅ Real-time X-ray analysis using AI  
-✅ Speak your symptoms and get instant, doctor-style guidance  
-✅ Decode complex medical reports into simple language  
-✅ Scan tablets or prescriptions and know exactly what you're taking  
-✅ Clean and dynamic interface, made for **patients**, not doctors
+It works like a personal health assistant, available anytime.
 
 ---
 
-## 🩺 Core Features
+## What Makes HealthWhisper Unique
 
-### 🩻 1. X-ray Scanner
-- Upload or click an X-ray image
-- AI analyzes and explains the X-ray in understandable words
-
-### 🎙️ 2. Voice to Explanation
-- Talk about your symptoms using the mic
-- AI listens and replies with medical suggestions like a real doctor
-
-### 🧪 3. Medical Term Decoder
-- Upload blood/lab reports
-- AI explains what each parameter means and whether it's normal
-
-### 💊 4. Tablet Analyzer
-- Scan any medicine or prescription slip
-- Get the tablet’s name, use, dose, and warnings
+- Real-time X-ray image analysis using AI
+- Speak your health symptoms and receive helpful suggestions
+- Understand complex blood report values in plain language
+- Scan your medicine or prescription and know exactly what it is and how to use it
+- Interface built specifically for patients with ease of use in mind
 
 ---
 
-## 🧠 Tech Stack
+## Features
 
-- **Frontend**: React Native  
-- **Backend**: Node.js / Python Flask  
-- **AI Integration**: OpenAI GPT, Custom Medical APIs  
-- **OCR**: Google Vision API / Tesseract  
-- **Voice**: Whisper / Google Speech API  
-- **Storage**: Firebase / AWS
+### 1. X-ray Scanner
+
+You can upload or take a picture of your X-ray. The app uses AI to analyze the image and explains the result in a way anyone can understand — no medical background needed.
+
+### 2. Voice to Explanation
+
+You can speak your symptoms out loud. The app listens and responds with suggestions as if you're talking to a doctor. It's helpful when you're unsure what's wrong or what to do next.
+
+### 3. Medical Term Decoder
+
+Upload your blood or lab report and the app will break down the meaning of each term. It highlights what’s normal, what’s not, and what you should know about it.
+
+### 4. Tablet Analyzer
+
+Scan any medicine strip or a prescription note. The app will identify the tablet, explain what it's used for, and tell you how and when to take it — along with any precautions.
 
 ---
 
-## 📸 App Screenshots
+## Technology Used
 
-(Upload the following screenshots to GitHub or an image host and update the links.)
-
-| X-ray Scanner | Voice Chat | Report Decoder | Tablet Scanner |
-|---------------|-------------|----------------|----------------|
-| ![](XrayAnalysis.jpg) | ![](Voiceanalysis.jpg]) | ![](BloodreportAnalysis.jpg) | ![](Voiceanalysis.jpg) |
+- Frontend: React Native
+- Backend: Node.js or Python Flask
+- AI Integration: OpenAI GPT, custom medical AI APIs
+- OCR: Google Vision API or Tesseract
+- Voice Input: Whisper or Google Speech-to-Text
+- Storage: Firebase or AWS
 
 ---
 
-## 🚀 Quick Start
+## App Screenshots
+
+(Add the following images to your repository or image host and link them here.)
+
+- X-ray Scanner: `XrayAnalysis.jpg`
+- Voice Assistant: `Voiceanalysis.jpg`
+- Blood Report Decoder: `BloodreportAnalysis.jpg`
+- Tablet Scanner: `TabletAnalysis.jpg`
+- Main Interface: `WhatsApp Image 2025-06-26 at 16.50.18_317472d4.jpg`
+
+---
+
+## How to Run the App
 
 ```bash
 git clone https://github.com/yourusername/HealthWhisper-AI-Medical-Assistant.git
