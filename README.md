@@ -205,21 +205,7 @@ Scan any medicine strip or a prescription note. The app will identify the tablet
 - Voice Input: Whisper or Google Speech-to-Text
 - Storage: Firebase or AWS
 ---
-## 📸 App Screenshots
-### Main App Interface  
-![Main App UI](./WhatsApp%20Image%202025-06-26%20at%2016.50.18_317472d4.jpg)
 
-### X-ray Scanner  
-![X-ray Scanner](./XrayAnalysis.jpg)
-
-### Voice Assistant  
-![Voice Assistant](./Voiceanalysis.jpg)
-
-### Blood Report Decoder  
-![Blood Report Decoder](./BloodreportAnalysis.jpg)
-
-### Tablet Analyzer  
-![Tablet Analyzer](./TabletAnalysis.jpg)
 
 
 ---
