@@ -27,7 +27,7 @@ Many patients struggle to understand complex medical information. HealthWhisper 
 
 <div align="center">
 
-![HealthWhisper Dashboard](./dashboard.jpg)
+![HealthWhisper Dashboard](https://github.com/Dhanushc22/HealthWhisper-/blob/master/Dashboard%20(2).jpg)
 
 **Professional Home Dashboard with 4 AI-Powered Medical Services**
 
