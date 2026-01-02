@@ -144,7 +144,7 @@ This project is licensed under the MIT License.
 
 ## Support & Contact
 
-- 📧 Email: support@healthwhisper.app
+- 📧 Email: dhanushc092@gmail.com
 - 🐛 Bug Reports: GitHub Issues
 - 📖 Documentation: [Full Docs](https://docs.healthwhisper.app)
 
