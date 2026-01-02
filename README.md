@@ -33,27 +33,7 @@ Many patients struggle to understand complex medical information. HealthWhisper 
 
 </div>
 
----
 
-## Screenshots
-
-<div align="center">
-
-### X-Ray Analysis
-![X-Ray Analysis](./xray-analysis.jpg)
-
-### Medical Reports  
-![Medical Reports](./medical-reports.jpg)
-
-### Medication Guide
-![Medication Guide](./medication-guide.jpg)
-
-### Health Consultation
-![Health Consultation](./health-consultation.jpg)
-
-</div>
-
----
 
 ## Features
 
