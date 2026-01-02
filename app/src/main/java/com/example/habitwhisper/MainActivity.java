@@ -3,8 +3,8 @@ package com.example.habitwhisper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -12,34 +12,64 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnXray = findViewById(R.id.btn_xray);
-        Button btnVoice = findViewById(R.id.btn_voice);
-        Button btnMedicalTerm = findViewById(R.id.btn_medical_term);
-        Button btnTablet = findViewById(R.id.btn_tablet);
+        // Initialize modern card views
+        CardView cardXray = findViewById(R.id.card_xray);
+        CardView cardVoice = findViewById(R.id.card_voice);
+        CardView cardMedicalTerm = findViewById(R.id.card_medical_term);
+        CardView cardTablet = findViewById(R.id.card_tablet);
 
-        btnXray.setOnClickListener(new View.OnClickListener() {
+        // Set up modern card click listeners with smooth animations
+        cardXray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateCardClick(v);
                 startActivity(new Intent(MainActivity.this, FeatureXrayActivity.class));
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        btnVoice.setOnClickListener(new View.OnClickListener() {
+
+        cardVoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateCardClick(v);
                 startActivity(new Intent(MainActivity.this, FeatureVoiceActivity.class));
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        btnMedicalTerm.setOnClickListener(new View.OnClickListener() {
+
+        cardMedicalTerm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateCardClick(v);
                 startActivity(new Intent(MainActivity.this, FeatureMedicalTermActivity.class));
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        btnTablet.setOnClickListener(new View.OnClickListener() {
+
+        cardTablet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateCardClick(v);
                 startActivity(new Intent(MainActivity.this, FeatureTabletActivity.class));
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
+    }
+
+    private void animateCardClick(View view) {
+        // Add subtle scale animation for better user feedback
+        view.animate()
+            .scaleX(0.95f)
+            .scaleY(0.95f)
+            .setDuration(100)
+            .withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                    view.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(100);
+                }
+            });
     }
 }

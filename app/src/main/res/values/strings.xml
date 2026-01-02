@@ -1,11 +1,36 @@
 <resources>
     <string name="app_name">HealthWhisper</string>
-    <string name="xray_scanner">X-Ray Scanner</string>
+    
+    <!-- Feature Names -->
+    <string name="xray_scanner">X-Ray Analysis</string>
     <string name="voice_consultation">Voice Consultation</string>
-    <string name="medical_term_decoder">Medical Term Decoder</string>
-    <string name="tablet_analyzer">Tablet Analyzer</string>
-    <string name="explore_xray">Explore X-Ray Scanner</string>
-    <string name="explore_voice">Explore Voice Consultation</string>
-    <string name="explore_medical_term">Explore Medical Term Decoder</string>
-    <string name="explore_tablet">Explore Tablet Analyzer</string>
+    <string name="medical_term_decoder">Report Analysis</string>
+    <string name="tablet_analyzer">Medication Guide</string>
+    
+    <!-- Action Buttons -->
+    <string name="explore_xray">Tap to analyze →</string>
+    <string name="explore_voice">Tap to consult →</string>
+    <string name="explore_medical_term">Tap to decode →</string>
+    <string name="explore_tablet">Tap to scan →</string>
+    
+    <!-- Feature Descriptions -->
+    <string name="xray_description">AI-powered X-ray image analysis with instant medical insights</string>
+    <string name="voice_description">Speak your symptoms and get instant AI medical advice</string>
+    <string name="medical_description">Upload medical reports and get simplified explanations</string>
+    <string name="tablet_description">Scan tablets and get detailed medication information</string>
+    
+    <!-- Upload Messages -->
+    <string name="upload_xray_title">Upload X-Ray Image</string>
+    <string name="upload_xray_description">Select your X-ray image, medical scan, or report document for AI analysis</string>
+    <string name="upload_button_text">Choose File to Analyze</string>
+    <string name="supported_formats">Supports: JPEG, PNG, PDF, DOC files</string>
+    
+    <!-- Analysis States -->
+    <string name="analyzing_message">🔄 Analyzing your medical file with advanced AI...</string>
+    <string name="analysis_complete">✅ Analysis Complete</string>
+    <string name="analysis_error">❌ Analysis failed. Please try again.</string>
+    
+    <!-- Disclaimer -->
+    <string name="medical_disclaimer_title">Medical Disclaimer</string>
+    <string name="medical_disclaimer_text">This AI analysis is for informational purposes only and should not replace professional medical advice. Always consult with qualified healthcare professionals for medical diagnosis and treatment decisions.</string>
 </resources>

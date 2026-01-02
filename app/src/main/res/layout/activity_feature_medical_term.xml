@@ -5,130 +5,302 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FEFD"
+    android:background="@color/background_secondary"
+    android:fillViewport="true"
     tools:context=".FeatureMedicalTermActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
 
-        <!-- Back Button -->
-        <TextView
-            android:id="@+id/back_to_home"
-            android:layout_width="wrap_content"
+        <!-- Modern Header with Back Button -->
+        <LinearLayout
+            android:id="@+id/header_section"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:drawableLeft="@drawable/ic_arrow_back_24"
-            android:drawableStart="@drawable/ic_arrow_back_24"
-            android:drawablePadding="8dp"
-            android:textColor="#8E24AA"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="18dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_feature_medical"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/medical_term_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medical Term Decoder"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#6A1B9A"
-            app:layout_constraintTop_toBottomOf="@id/back_to_home"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- Back Button -->
+            <LinearLayout
+                android:id="@+id/back_to_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_button_secondary"
+                android:clickable="true"
+                android:focusable="true">
+                
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_back_modern"
+                    android:layout_marginEnd="8dp"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Feature Title -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp">
+                
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_medical_modern"
+                    android:layout_marginEnd="12dp"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medical Reports"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/medical_accent"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload your medical reports, lab results, or health documents for AI analysis and explanations"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="2dp"/>
+        </LinearLayout>
+
+        <!-- Modern Upload Section -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_upload_blood"
+            android:id="@+id/card_upload_medical"
             android:layout_width="0dp"
-            android:layout_height="180dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#F3F0FB"
-            app:layout_constraintTop_toBottomOf="@id/medical_term_title"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="@color/background_primary"
+            app:layout_constraintTop_toBottomOf="@id/header_section"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp">
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:padding="32dp"
+                android:gravity="center_horizontal">
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/c"/>
+                <!-- Upload Icon -->
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/bg_feature_medical"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp">
+                    
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_upload_modern"/>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Upload Blood Report"
-                    android:textSize="16sp"
+                    android:text="Upload Medical Report"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="8dp"/>
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="8dp"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select your medical reports, lab results, or health documents for AI analysis"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Upload Button -->
                 <Button
                     android:id="@+id/btn_upload_blood"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Choose Report to Analyze"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_inverse"
+                    android:background="@drawable/bg_button_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"/>
+
+                <!-- Supported Formats -->
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Select or Capture Report"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="@color/medical_header"
-                    android:textColor="@android:color/white"/>
+                    android:text="Supports: JPEG, PNG, PDF, DOC files"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_tertiary"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/medical_term_result_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Blood Report Analysis"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/card_upload_blood"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
-            android:id="@+id/medical_term_result"
+        <!-- Modern Analysis Results Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_medical_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Upload a blood report to get started"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            android:background="#F5F5F5"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/medical_term_result_title"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/background_primary"
+            app:layout_constraintTop_toBottomOf="@id/card_upload_medical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+                
+                <!-- Results Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    
+                    <LinearLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_feature_medical"
+                        android:gravity="center"
+                        android:layout_marginEnd="16dp">
+                        
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_medical_modern"/>
+                    </LinearLayout>
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="AI Report Analysis"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+                
+                <!-- Results Content -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@color/background_tertiary">
+                    
+                    <TextView
+                        android:id="@+id/medical_term_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📋 Upload a medical report to begin AI analysis\n\n🔍 Our advanced AI will analyze your document and provide:\n• Clear explanations of findings\n• Medical term definitions\n• Health insights\n• Recommended next steps"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_secondary"
+                        android:padding="20dp"
+                        android:lineSpacingExtra="4dp"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/medical_term_disclaimer"
+        <!-- Modern Disclaimer -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/disclaimer_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Medical Disclaimer: This analysis is for educational purposes only and should not replace professional medical advice. Always discuss your test results with your healthcare provider for proper interpretation and treatment recommendations."
-            android:textSize="12sp"
-            android:textColor="#616161"
-            android:background="#F3E5F5"
-            android:padding="12dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/medical_term_result"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/info_light"
+            app:layout_constraintTop_toBottomOf="@id/card_medical_result"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="32dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="top">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🩺"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="12dp"/>
+                
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medical Report Disclaimer"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/info"
+                        android:layout_marginBottom="4dp"/>
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="This AI analysis is for educational purposes only and should not replace professional medical advice. Always discuss your results with your healthcare provider for proper interpretation."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:lineSpacingExtra="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

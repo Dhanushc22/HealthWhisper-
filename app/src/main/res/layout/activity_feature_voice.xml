@@ -5,140 +5,329 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FEFD"
+    android:background="@color/background_secondary"
+    android:fillViewport="true"
     tools:context=".FeatureVoiceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
 
-        <!-- Back Button -->
-        <TextView
-            android:id="@+id/back_to_home"
-            android:layout_width="wrap_content"
+        <!-- Modern Header with Back Button -->
+        <LinearLayout
+            android:id="@+id/header_section"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="← Back"
-            android:textColor="#43A047"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="18dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/voice_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Voice Consultation"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#1B5E20"
+            android:orientation="vertical"
+            android:background="@drawable/bg_feature_voice"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- Back Button -->
+            <LinearLayout
+                android:id="@+id/back_to_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_button_secondary"
+                android:clickable="true"
+                android:focusable="true">
+                
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_back_modern"
+                    android:layout_marginEnd="8dp"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Feature Title -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp">
+                
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_voice_modern"
+                    android:layout_marginEnd="12dp"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Voice Consultation"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/voice_accent"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speak your symptoms or type your health questions and get instant AI-powered medical advice"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="2dp"/>
+        </LinearLayout>
+
+        <!-- Modern Input Section -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_voice_input"
+            android:id="@+id/card_input_voice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#E8FAF2"
-            app:layout_constraintTop_toBottomOf="@id/voice_title"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="@color/background_primary"
+            app:layout_constraintTop_toBottomOf="@id/header_section"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp">
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:padding="32dp"
+                android:gravity="center_horizontal">
 
-                <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/d"/>
+                <!-- Voice Icon -->
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/bg_feature_voice"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp">
+                    
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_voice_modern"/>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ask Your Question"
-                    android:textSize="16sp"
+                    android:text="Voice or Text Input"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="8dp"/>
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="8dp"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Record your voice or type your health questions for AI medical consultation"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Voice Recording Button -->
                 <Button
                     android:id="@+id/btn_start_recording"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Click to start recording"
-                    android:backgroundTint="#43A047"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="🎙️ Start Voice Recording"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_inverse"
+                    android:background="@drawable/bg_button_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="16dp"/>
 
+                <!-- Text Input -->
                 <EditText
                     android:id="@+id/edit_text_question"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Type your health question here..."
-                    android:layout_marginTop="8dp"/>
+                    android:layout_height="120dp"
+                    android:hint="Or type your health question here..."
+                    android:textSize="16sp"
+                    android:background="@drawable/edittext_background"
+                    android:padding="16dp"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:layout_marginBottom="16dp"/>
 
+                <!-- Get Advice Button -->
                 <Button
                     android:id="@+id/btn_get_advice"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Get Medical Advice"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_inverse"
+                    android:background="@drawable/bg_button_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"/>
+
+                <!-- Supported Formats -->
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Get Medical Advice"
-                    android:layout_marginTop="8dp"/>
+                    android:text="Voice recording or text input supported"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_tertiary"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/voice_response_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medical Response"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/card_voice_input"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
-            android:id="@+id/voice_response"
+        <!-- Modern Analysis Results Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_voice_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Ask a health question to get started"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            android:background="#F5F5F5"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/voice_response_title"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/background_primary"
+            app:layout_constraintTop_toBottomOf="@id/card_input_voice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+                
+                <!-- Results Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    
+                    <LinearLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_feature_voice"
+                        android:gravity="center"
+                        android:layout_marginEnd="16dp">
+                        
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_voice_modern"/>
+                    </LinearLayout>
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="AI Medical Response"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+                
+                <!-- Results Content -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@color/background_tertiary">
+                    
+                    <TextView
+                        android:id="@+id/voice_response"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🎤 Ready for voice consultation\n\n🩺 Ask your health questions and get:\n• Professional medical advice\n• Symptom analysis\n• Treatment recommendations\n• Health guidance in simple language"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_secondary"
+                        android:padding="20dp"
+                        android:lineSpacingExtra="4dp"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/voice_disclaimer"
+        <!-- Modern Disclaimer -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/disclaimer_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Medical Disclaimer: This AI consultation is for informational purposes only and should not replace professional medical advice. Always consult with qualified healthcare professionals for medical diagnosis and treatment decisions."
-            android:textSize="12sp"
-            android:textColor="#616161"
-            android:background="#E8F5E9"
-            android:padding="12dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/voice_response"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/info_light"
+            app:layout_constraintTop_toBottomOf="@id/card_voice_result"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="32dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="top">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🩺"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="12dp"/>
+                
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medical Consultation Disclaimer"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/info"
+                        android:layout_marginBottom="4dp"/>
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="This AI consultation is for informational purposes only and should not replace professional medical advice. Always consult with qualified healthcare professionals for medical diagnosis and treatment decisions."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:lineSpacingExtra="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

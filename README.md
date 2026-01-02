@@ -3,9 +3,7 @@
 HealthWhisper is a mobile application designed to make healthcare easier and more understandable for everyone. With the help of artificial intelligence, users can get clear and simple explanations of medical information such as X-rays, blood reports, tablets, and even symptoms — just by speaking.
 
 It works like a personal health assistant, available anytime.
-
 ---
-
 ## What Makes HealthWhisper Unique
 
 - Real-time X-ray image analysis using AI
@@ -13,9 +11,7 @@ It works like a personal health assistant, available anytime.
 - Understand complex blood report values in plain language
 - Scan your medicine or prescription and know exactly what it is and how to use it
 - Interface built specifically for patients with ease of use in mind
-
 ---
-
 ## Features
 
 ### 1. X-ray Scanner
@@ -33,9 +29,7 @@ Upload your blood or lab report and the app will break down the meaning of each 
 ### 4. Tablet Analyzer
 
 Scan any medicine strip or a prescription note. The app will identify the tablet, explain what it's used for, and tell you how and when to take it — along with any precautions.
-
 ---
-
 ## Technology Used
 
 - Frontend: React Native
@@ -44,12 +38,8 @@ Scan any medicine strip or a prescription note. The app will identify the tablet
 - OCR: Google Vision API or Tesseract
 - Voice Input: Whisper or Google Speech-to-Text
 - Storage: Firebase or AWS
-
 ---
-
 ## 📸 App Screenshots
-
-
 ### Main App Interface  
 ![Main App UI](./WhatsApp%20Image%202025-06-26%20at%2016.50.18_317472d4.jpg)
 

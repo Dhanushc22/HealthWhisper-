@@ -5,187 +5,302 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FEFD"
+    android:background="@color/background_secondary"
+    android:fillViewport="true"
     tools:context=".FeatureXrayActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
 
-        <!-- Back Button -->
-        <TextView
-            android:id="@+id/back_to_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="← Back"
-            android:textColor="#1976D2"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="18dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <!-- Title and subtitle -->
+        <!-- Modern Header with Back Button -->
         <LinearLayout
-            android:id="@+id/title_section"
-            android:layout_width="0dp"
+            android:id="@+id/header_section"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/back_to_home"
+            android:background="@drawable/bg_feature_xray"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp">
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Back Button -->
+            <LinearLayout
+                android:id="@+id/back_to_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_button_secondary"
+                android:clickable="true"
+                android:focusable="true">
+                
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_back_modern"
+                    android:layout_marginEnd="8dp"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Feature Title -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp">
+                
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/xray_icon"/>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_xray_modern"
+                    android:layout_marginEnd="12dp"/>
+                
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="X-Ray Scanner"
+                    android:text="X-Ray Analysis"
+                    android:textSize="28sp"
                     android:textStyle="bold"
-                    android:textColor="#1976D2"
-                    android:textSize="18sp"
-                    android:layout_marginStart="8dp"/>
+                    android:textColor="@color/xray_accent"
+                    android:fontFamily="sans-serif-medium"/>
             </LinearLayout>
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="AI-Powered X-Ray Analysis"
-                android:textStyle="bold"
-                android:textColor="#1A237E"
-                android:textSize="22sp"
-                android:layout_marginTop="8dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload your X-ray image and get instant AI-powered medical insights"
-                android:textColor="#757575"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp"/>
+                android:text="Upload your X-ray images and get instant AI-powered medical insights in simple, understandable language"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="2dp"/>
         </LinearLayout>
 
-        <!-- Upload Card -->
+        <!-- Modern Upload Section -->
         <androidx.cardview.widget.CardView
             android:id="@+id/card_upload_xray"
             android:layout_width="0dp"
-            android:layout_height="180dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#EAF6FB"
-            app:layout_constraintTop_toBottomOf="@id/title_section"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="@color/background_primary"
+            app:layout_constraintTop_toBottomOf="@id/header_section"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/dashed_border">
+                android:padding="32dp"
+                android:gravity="center_horizontal">
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/e"/>
+                <!-- Upload Icon -->
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/bg_feature_xray"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp">
+                    
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_upload_modern"/>
+                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Drag &amp; drop X-ray image"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="or click to select file (JPEG, PNG, GIF)"
-                    android:textSize="13sp"
-                    android:textColor="#757575"
-                    android:layout_marginTop="2dp"/>
-
-                <Button
-                    android:id="@+id/btn_upload_xray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Upload X-Ray Image"
-                    android:backgroundTint="#00BCD4"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select your X-ray image, medical scan, or report document for AI analysis"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Upload Button -->
+                <Button
+                    android:id="@+id/btn_upload_xray"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Choose File to Analyze"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_inverse"
+                    android:background="@drawable/bg_button_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="4dp"/>
+
+                <!-- Supported Formats -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Supports: JPEG, PNG, PDF, DOC files"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_tertiary"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Analysis Results Card -->
+        <!-- Modern Analysis Results Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/card_xray_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#F5F5F5"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/background_primary"
             app:layout_constraintTop_toBottomOf="@id/card_upload_xray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="18dp">
-                <TextView
-                    android:layout_width="wrap_content"
+                android:padding="24dp">
+                
+                <!-- Results Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Analysis Results"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
-                    android:textColor="#1A237E"/>
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/xray_icon"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:id="@+id/xray_result"
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    
+                    <LinearLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_feature_xray"
+                        android:gravity="center"
+                        android:layout_marginEnd="16dp">
+                        
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_xray_modern"/>
+                    </LinearLayout>
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="AI Analysis Results"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+                
+                <!-- Results Content -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Upload an X-ray image to get started"
-                    android:textSize="15sp"
-                    android:textColor="#333"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"/>
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@color/background_tertiary">
+                    
+                    <TextView
+                        android:id="@+id/xray_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📋 Upload an X-ray image to begin AI analysis\n\n🔍 Our advanced AI will analyze your medical image and provide:\n• Clear explanations in simple language\n• Key findings and observations\n• Suggested next steps\n• Important health insights"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_secondary"
+                        android:padding="20dp"
+                        android:lineSpacingExtra="4dp"/>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Disclaimer -->
-        <TextView
-            android:id="@+id/xray_disclaimer"
+        <!-- Modern Disclaimer -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/disclaimer_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Medical Disclaimer: This AI analysis is for informational purposes only and should not replace professional medical advice. Always consult with qualified healthcare professionals for medical diagnosis and treatment decisions."
-            android:textSize="12sp"
-            android:textColor="#616161"
-            android:background="#E3F2FD"
-            android:padding="12dp"
-            android:layout_marginTop="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/warning_light"
             app:layout_constraintTop_toBottomOf="@id/card_xray_result"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="32dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="top">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚠️"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="12dp"/>
+                
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medical Disclaimer"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/warning"
+                        android:layout_marginBottom="4dp"/>
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="This AI analysis is for informational purposes only and should not replace professional medical advice. Always consult with qualified healthcare professionals for medical diagnosis and treatment decisions."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"
+                        android:lineSpacingExtra="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

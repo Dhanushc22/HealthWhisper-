@@ -8,48 +8,53 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.JSONObject;
 
 public class FeatureXrayActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private TextView resultText;
     private Button uploadBtn;
+    private LinearLayout backToHome;
     private Uri imageUri;
-    // Replace with a new OpenAI API key (example key, replace with your own valid key!)
-    private final String OPENAI_API_KEY = "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";
+    
+    // OpenRouter API key
+    private static final String OPENROUTER_API_KEY = "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";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_xray);
+        
+        // Initialize views to match the UI layout
         resultText = findViewById(R.id.xray_result);
         uploadBtn = findViewById(R.id.btn_upload_xray);
+        backToHome = findViewById(R.id.back_to_home);
 
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("application/pdf,image/*");
-                String[] mimeTypes = {"image/jpeg", "image/png", "image/*", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
-                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-                startActivityForResult(Intent.createChooser(intent, "Select X-ray Image or Report (Image, PDF, or Doc)"), PICK_IMAGE_REQUEST);
+                intent.setType("image/*");
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
             }
         });
 
-        // Back to Home click
-        TextView backToHome = findViewById(R.id.back_to_home);
+        // Back to Home click - LinearLayout from the UI
         if (backToHome != null) {
             backToHome.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,14 +62,6 @@ public class FeatureXrayActivity extends AppCompatActivity {
                     finish();
                 }
             });
-            // Set the left arrow icon programmatically for compatibility
-            int color = getResources().getColor(R.color.xray_header); // Use the header color resource
-            android.graphics.drawable.Drawable arrow = getResources().getDrawable(R.drawable.ic_arrow_back_24);
-            if (arrow != null) {
-                arrow.setTint(color);
-                backToHome.setCompoundDrawablesWithIntrinsicBounds(arrow, null, null, null);
-            }
-            backToHome.setText("");
         }
     }
 
@@ -77,20 +74,22 @@ public class FeatureXrayActivity extends AppCompatActivity {
             if (fileType != null && (fileType.startsWith("image/"))) {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-                    resultText.setText("Analyzing image...");
+                    resultText.setText("🔍 Analyzing image...");
                     new AnalyzeXrayTask().execute(bitmap);
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
-                    resultText.setText("Failed to load image.");
+                    resultText.setText("❌ Failed to load image.");
                 }
             } else if (fileType != null && (fileType.equals("application/pdf") || fileType.equals("application/msword") || fileType.equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))) {
-                resultText.setText("Analyzing document...");
+                resultText.setText("📄 Analyzing document...");
                 new AnalyzeDocTask().execute(imageUri);
             } else {
-                resultText.setText("Selected file is not a supported type. Please select an image, PDF, or DOC file.");
+                resultText.setText("❌ Selected file is not a supported type. Please select an image, PDF, or DOC file.");
             }
         }
     }
+
+    // ================= OPENROUTER API TASKS =================
 
     private class AnalyzeXrayTask extends AsyncTask<Bitmap, Void, String> {
         @Override
@@ -117,9 +116,9 @@ public class FeatureXrayActivity extends AppCompatActivity {
                 URL url = new URL("https://openrouter.ai/api/v1/chat/completions");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
-                conn.setRequestProperty("Authorization", "Bearer " + OPENAI_API_KEY);
+                conn.setRequestProperty("Authorization", "Bearer " + OPENROUTER_API_KEY);
                 conn.setRequestProperty("Content-Type", "application/json");
-                conn.setRequestProperty("HTTP-Referer", "https://healthwhisper.app"); // Change to your app domain if available
+                conn.setRequestProperty("HTTP-Referer", "https://healthwhisper.app");
                 conn.setRequestProperty("X-Title", "HealthWhisper");
                 conn.setDoOutput(true);
                 OutputStream os = conn.getOutputStream();
@@ -139,22 +138,22 @@ public class FeatureXrayActivity extends AppCompatActivity {
                     try {
                         JSONObject errorJson = new JSONObject(response);
                         if (errorJson.has("error")) {
-                            return "Sorry, the analysis could not be completed: " + errorJson.getJSONObject("error").optString("message", "(API error)");
+                            return "❌ Sorry, the analysis could not be completed: " + errorJson.getJSONObject("error").optString("message", "(API error)");
                         }
                     } catch (Exception ex) {}
-                    return "Sorry, the analysis could not be completed. (API error)";
+                    return "❌ Sorry, the analysis could not be completed. (API error)";
                 }
                 JSONObject jsonResponse = new JSONObject(response);
                 String result = jsonResponse.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getString("content");
                 return result.trim();
             } catch (Exception e) {
                 e.printStackTrace();
-                return "Sorry, the analysis could not be completed due to a technical error. Please check your internet connection and API key, then try again.";
+                return "❌ Sorry, the analysis could not be completed due to a technical error. Please check your internet connection and API key, then try again.";
             }
         }
         @Override
         protected void onPostExecute(String result) {
-            resultText.setText(result);
+            resultText.setText("✅ Analysis Complete\n\n" + result);
         }
     }
 
@@ -185,9 +184,9 @@ public class FeatureXrayActivity extends AppCompatActivity {
                 URL url = new URL("https://openrouter.ai/api/v1/chat/completions");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
-                conn.setRequestProperty("Authorization", "Bearer " + OPENAI_API_KEY);
+                conn.setRequestProperty("Authorization", "Bearer " + OPENROUTER_API_KEY);
                 conn.setRequestProperty("Content-Type", "application/json");
-                conn.setRequestProperty("HTTP-Referer", "https://healthwhisper.app"); // Change to your app domain if available
+                conn.setRequestProperty("HTTP-Referer", "https://healthwhisper.app");
                 conn.setRequestProperty("X-Title", "HealthWhisper");
                 conn.setDoOutput(true);
                 OutputStream os = conn.getOutputStream();
@@ -207,22 +206,22 @@ public class FeatureXrayActivity extends AppCompatActivity {
                     try {
                         JSONObject errorJson = new JSONObject(response);
                         if (errorJson.has("error")) {
-                            return "Sorry, the analysis could not be completed: " + errorJson.getJSONObject("error").optString("message", "(API error)");
+                            return "❌ Sorry, the analysis could not be completed: " + errorJson.getJSONObject("error").optString("message", "(API error)");
                         }
                     } catch (Exception ex) {}
-                    return "Sorry, the analysis could not be completed. (API error)";
+                    return "❌ Sorry, the analysis could not be completed. (API error)";
                 }
                 JSONObject jsonResponse = new JSONObject(response);
                 String result = jsonResponse.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getString("content");
                 return result.trim();
             } catch (Exception e) {
                 e.printStackTrace();
-                return "Sorry, the analysis could not be completed. Please try again with a clear document.";
+                return "❌ Sorry, the analysis could not be completed. Please try again with a clear document.";
             }
         }
         @Override
         protected void onPostExecute(String result) {
-            resultText.setText(result);
+            resultText.setText("✅ Analysis Complete\n\n" + result);
         }
     }
 }

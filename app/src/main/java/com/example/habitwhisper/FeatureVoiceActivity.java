@@ -24,8 +24,8 @@ public class FeatureVoiceActivity extends AppCompatActivity {
     private MediaRecorder recorder;
     private String audioFilePath;
     private static final int REQUEST_MICROPHONE = 200;
-    // Use the same API key as Xray feature
-    private final String OPENAI_API_KEY = "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";
+    // Use OpenRouter API key for consistent implementation
+    private static final String OPENROUTER_API_KEY = "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";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class FeatureVoiceActivity extends AppCompatActivity {
         recordBtn = findViewById(R.id.btn_start_recording);
 
         // Back to Home click
-        TextView backToHome = findViewById(R.id.back_to_home);
+        android.widget.LinearLayout backToHome = findViewById(R.id.back_to_home);
         if (backToHome != null) {
             backToHome.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -45,14 +45,6 @@ public class FeatureVoiceActivity extends AppCompatActivity {
                     finish();
                 }
             });
-            // Set the left arrow icon programmatically for compatibility
-            int color = getResources().getColor(R.color.voice_header); // Use the header color resource
-            android.graphics.drawable.Drawable arrow = getResources().getDrawable(R.drawable.ic_arrow_back_24);
-            if (arrow != null) {
-                arrow.setTint(color);
-                backToHome.setCompoundDrawablesWithIntrinsicBounds(arrow, null, null, null);
-            }
-            backToHome.setText("");
         }
 
         recordBtn.setOnClickListener(new View.OnClickListener() {
@@ -129,29 +121,32 @@ public class FeatureVoiceActivity extends AppCompatActivity {
             try {
                 String userInput = params[0];
                 String prompt = "You are a world-class medical AI doctor. The patient says: '" + userInput + "'. Analyze the symptoms or question, provide a clear, patient-friendly explanation, possible causes, and actionable recommendations. Avoid medical jargon. If urgent, advise to see a doctor.";
+                
+                // Create OpenRouter API request
                 org.json.JSONObject jsonBody = new org.json.JSONObject();
                 jsonBody.put("model", "openai/gpt-4o");
                 jsonBody.put("messages", new org.json.JSONArray()
-                        .put(new org.json.JSONObject()
-                                .put("role", "user")
-                                .put("content", new org.json.JSONArray()
-                                        .put(new org.json.JSONObject().put("type", "text").put("text", prompt))
-                                )
-                        )
+                    .put(new org.json.JSONObject()
+                        .put("role", "user")
+                        .put("content", prompt)
+                    )
                 );
-                jsonBody.put("max_tokens", 600);
+                jsonBody.put("max_tokens", 700);
+
                 java.net.URL url = new java.net.URL("https://openrouter.ai/api/v1/chat/completions");
                 java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
-                conn.setRequestProperty("Authorization", "Bearer " + OPENAI_API_KEY);
+                conn.setRequestProperty("Authorization", "Bearer " + OPENROUTER_API_KEY);
                 conn.setRequestProperty("Content-Type", "application/json");
                 conn.setRequestProperty("HTTP-Referer", "https://healthwhisper.app");
                 conn.setRequestProperty("X-Title", "HealthWhisper");
                 conn.setDoOutput(true);
+                
                 java.io.OutputStream os = conn.getOutputStream();
                 os.write(jsonBody.toString().getBytes());
                 os.flush();
                 os.close();
+                
                 int responseCode = conn.getResponseCode();
                 java.io.InputStream is = (responseCode == 200) ? conn.getInputStream() : conn.getErrorStream();
                 java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
@@ -160,15 +155,18 @@ public class FeatureVoiceActivity extends AppCompatActivity {
                 while ((len = is.read(buffer)) != -1) baos.write(buffer, 0, len);
                 is.close();
                 String response = baos.toString();
+                android.util.Log.d("OpenRouter_Voice", response);
+                
                 if (responseCode != 200) {
                     try {
                         org.json.JSONObject errorJson = new org.json.JSONObject(response);
                         if (errorJson.has("error")) {
-                            return "Sorry, the analysis could not be completed: " + errorJson.getJSONObject("error").optString("message", "(API error)");
+                            return "❌ Sorry, the analysis could not be completed: " + errorJson.getJSONObject("error").optString("message", "(API error)");
                         }
                     } catch (Exception ex) {}
-                    return "Sorry, the analysis could not be completed. (API error)";
+                    return "❌ Sorry, the analysis could not be completed. (API error)";
                 }
+                
                 org.json.JSONObject jsonResponse = new org.json.JSONObject(response);
                 String result = jsonResponse.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getString("content");
                 return result.trim();
@@ -179,7 +177,7 @@ public class FeatureVoiceActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-            responseText.setText(result);
+            responseText.setText("✅ Analysis Complete\n\n" + result);
         }
     }
 
