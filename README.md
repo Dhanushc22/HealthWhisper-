@@ -27,9 +27,29 @@ Many patients struggle to understand complex medical information. HealthWhisper 
 
 <div align="center">
 
-![HealthWhisper Dashboard](dashboard.jpg)
+![HealthWhisper Dashboard](./dashboard.jpg)
 
 **Professional Home Dashboard with 4 AI-Powered Medical Services**
+
+</div>
+
+---
+
+## Screenshots
+
+<div align="center">
+
+### X-Ray Analysis
+![X-Ray Analysis](./xray-analysis.jpg)
+
+### Medical Reports  
+![Medical Reports](./medical-reports.jpg)
+
+### Medication Guide
+![Medication Guide](./medication-guide.jpg)
+
+### Health Consultation
+![Health Consultation](./health-consultation.jpg)
 
 </div>
 
